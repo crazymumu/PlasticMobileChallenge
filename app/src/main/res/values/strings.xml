@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PlasticMobileChallenge</string>
+    <string name="clock_init_value">00:00:00</string>
+</resources>

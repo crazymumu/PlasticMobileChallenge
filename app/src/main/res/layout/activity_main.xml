@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:name="com.example.mswu.plasticmobilechallenge.DrawerFragment"
+        android:id="@+id/drawer_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom"/>
+
+    <fragment
+        android:name="com.example.mswu.plasticmobilechallenge.ClockFragment"
+        android:id="@+id/clock_fragment"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"/>
+
+</FrameLayout>
