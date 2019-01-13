@@ -6,35 +6,35 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements DragViewListener.Event {
+    private ClockFragment mClockFragment;
     private DrawerFragment mDrawerFragment;
-    private boolean drawerOpened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mClockFragment = (ClockFragment) getSupportFragmentManager().findFragmentById(R.id.clock_fragment);
         mDrawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer_fragment);
     }
 
     @Override
     public void onBegin(View view) {
-
+        mDrawerFragment.setOpen(true);
     }
 
     @Override
     public void onMove(View view) {
-        boolean hit = hitTest(view, mDrawerFragment.getView());
 
-        // Only update drawer when values are different to avoid unnecessary computation.
-        if (hit != drawerOpened) {
-            drawerOpened = hit;
-            mDrawerFragment.setOpen(drawerOpened);
-        }
     }
 
     @Override
     public void onEnd(View view) {
+        final boolean hit = hitTest(view, mDrawerFragment.getView());
+        final int clockFragmentBottom = (int) (mClockFragment.getView().getY()) + mClockFragment.getView().getHeight();
 
+        if (!hit || mDrawerFragment.getView().getY() + mDrawerFragment.getPaddingHeight() > clockFragmentBottom) {
+            mDrawerFragment.setOpen(false);
+        }
     }
 
     private boolean hitTest(View v1, View v2) {

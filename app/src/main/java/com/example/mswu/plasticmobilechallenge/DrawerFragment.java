@@ -67,6 +67,10 @@ public class DrawerFragment extends Fragment {
         return view;
     }
 
+    public int getPaddingHeight() {
+        return mPaddingHeight;
+    }
+
     public void toggleOpen() {
         setOpen(!mOpened);
     }
